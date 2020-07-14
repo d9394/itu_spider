@@ -2,10 +2,9 @@
 #coding=utf8
 
 import re  
-import MySQLdb.cursors
 import urllib2
 #import string
-import MySQLdb
+import pymysql
 from time import sleep,ctime
 import os
 import sys
@@ -94,12 +93,12 @@ ITU = {
 if __name__=='__main__':  
 	global cursor, db
 	try:
-		db=MySQLdb.connect( **mysql_config )
+		db=pymysql.connect( **mysql_config )
 	except Exception as e:
 		print ("Mysql connect error! or %s" % e)
 	else:
 		try:
-			cursor=db.cursor(cursorclass=MySQLdb.cursors.DictCursor)
+			cursor=db.cursor(pymysql.cursors.DictCursor)
 		except Exception as e:
 			print "Create cursor error! or %s" % e
 			
